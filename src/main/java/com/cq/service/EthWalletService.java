@@ -494,13 +494,7 @@ public class EthWalletService {
         BigDecimal sumToken = BigDecimal.ZERO;
 
         try {
-            BTCMessage msg = new BTCMessage();
-            msg.setIP(configParam.walletip);
-            msg.setPORT(configParam.walletport);
-            msg.setACCESS_KEY("");
-            msg.setSECRET_KEY("");
-            msg.setPASSWORD("");
-            ETHUtils ethUtils = new ETHUtils(msg);
+            ETHUtils ethUtils = getETHclient();
 
             for (String a : lsAddresses) {
 
@@ -540,13 +534,7 @@ public class EthWalletService {
     }
 
     public void sumWalletTokenInNodeEthWithConfig() {
-        BTCMessage msg = new BTCMessage();
-        msg.setIP(configParam.walletip);
-        msg.setPORT(configParam.walletport);
-        msg.setACCESS_KEY("");
-        msg.setSECRET_KEY("");
-        msg.setPASSWORD(configParam.walletpassword);
-        ETHUtils client = new ETHUtils(msg);
+        ETHUtils client = getETHclient();
 
         try {
             List<String> ls = client.eth_accountsValue();
@@ -710,13 +698,7 @@ public class EthWalletService {
 
             log.info("------------- collection start {}", type);
 
-            BTCMessage msg = new BTCMessage();
-            msg.setIP(configParam.walletip);
-            msg.setPORT(configParam.walletport);
-            msg.setACCESS_KEY("");
-            msg.setSECRET_KEY("");
-            msg.setPASSWORD(configParam.walletpassword);
-            ETHUtils client = new ETHUtils(msg);
+            ETHUtils client = getETHclient();
 
             List<String> ls = client.eth_accountsValue();
             if (type == 0) {
